@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
 while read -r num; do
-  factors=$(factor "$num" | cut -d':' -f2- | tr ' ' '*')
+  factors=$(factor "$num" | awk '{ for (i=2; i<=NF; i++) printf "%s%s", (i>2?"*":""), $i }')
   echo "$num=$factors"
 done < "$1"
