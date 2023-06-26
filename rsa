@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+if [ $# -ne 1 ]; then
+    echo 'Usage: rsa <file>'
+    exit 1
+fi
+
+num=$(cat "$1")
+factors=$(factor "$num" | cut -d':' -f2- | tr ' ' '*')
+echo "$num=$factors"

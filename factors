@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+while read -r num; do
+  factors=$(factor "$num" | cut -d':' -f2- | tr ' ' '*')
+  echo "$num=$factors"
+done < "$1"
